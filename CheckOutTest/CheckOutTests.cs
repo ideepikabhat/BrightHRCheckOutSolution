@@ -1,4 +1,5 @@
 ﻿using CheckOutLibrary;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace CheckOutTest
@@ -19,6 +20,14 @@ namespace CheckOutTest
         public void SetUp()
         {
             _checkOutInstance = new CheckOut(_productDetails);
+        }
+
+        [Test]
+        public void CheckOut_Scan_ThrowsExceptionWithInvalidData()
+        {
+            Action act = () =>_checkOutInstance.Scan("");
+
+            act.Should().Throw<Exception>().WithMessage("Scanned item is empty or null");
         }
 
     }

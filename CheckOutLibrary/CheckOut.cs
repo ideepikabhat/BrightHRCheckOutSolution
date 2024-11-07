@@ -16,7 +16,21 @@
 
         public void Scan(string scannedItem)
         {
-            throw new NotImplementedException();
+            if(!string.IsNullOrEmpty(scannedItem))
+            {
+                if(!_scannedProductDetails.ContainsKey(scannedItem))
+                {
+                    _scannedProductDetails.Add(scannedItem, 1);
+                }
+                else
+                {
+                    _scannedProductDetails[scannedItem]++;
+                }
+            }
+            else
+            {
+                throw new Exception("Scanned item is empty or null");
+            }
         }
     }
 }
