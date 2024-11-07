@@ -8,5 +8,7 @@ namespace CheckOutLibrary
 {
     public interface ICheckOut
     {
+        void Scan(string scannedItem);
+        int GetTotalPrice();
     }
 }
